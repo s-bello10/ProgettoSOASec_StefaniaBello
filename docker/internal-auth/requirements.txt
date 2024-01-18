@@ -1,0 +1,3 @@
+Flask
+flask-session
+redis==5.0.1

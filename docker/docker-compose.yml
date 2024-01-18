@@ -1,0 +1,141 @@
+version: '3'
+
+services:
+  consul:
+    image: hashicorp/consul
+    container_name: consul
+    volumes:
+      - ./consul:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    ports:
+      - 8400:8400
+      - 8500:8500
+      - 86:53/udp
+    environment:
+      - SERVICE_NAME=consul
+    command: consul agent -ui -server -bootstrap -data-dir=/tmp/consul -client=0.0.0.0
+    networks:
+      - soasec_net
+
+  registrator:
+    image: gliderlabs/registrator
+    container_name: registrator
+    environment:
+      - SERVICE_NAME=registrator
+    depends_on:
+      - consul
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: "-internal consul://consul:8500"
+    networks:
+      - soasec_net
+
+  nginx:
+    build: ./nginx-gateway
+    image: nginx-gateway
+    container_name: nginx-gateway
+    ports:
+      - "443:443"
+    environment:
+      - SERVICE_NAME=nginx_gateway
+    depends_on:
+      - consul
+      - registrator
+    links:
+      - consul
+    networks:
+      - soasec_net
+
+  internal_auth:
+    build: internal-auth
+    container_name: internal_auth
+    ports:
+      - "127.0.0.1:8080:5000"
+    environment:
+      - FLASK_APP=auth.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - SERVICE_NAME=internal_auth
+      - FLASK_SECRET_KEY=ac3SN5Ro9lSU1Ii0UHiv
+      - BASE_URI=https://localhost
+      - ALLOWED_APIS=drive
+    depends_on:
+      - registrator
+      - consul
+      - nginx
+    networks:
+      - soasec_net
+
+  google_auth:
+    build: ./google-auth
+    container_name: google_auth
+    ports:
+      - "127.0.0.1:8081:5000"
+    environment:
+      - FLASK_APP=api.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - SERVICE_NAME=google_auth
+      - CLIENT_ID=953713129533-o6a1fvmt50q0m8gm8pm13kh5llbs71t8.apps.googleusercontent.com
+      - CLIENT_SECRET=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
+      - TOKEN_URI=https://oauth2.googleapis.com/token
+      - AUTH_URL=https://accounts.google.com/o/oauth2/auth
+      - FLASK_SECRET_KEY=ac3SN5Ro9lSU1Ii0UHiv
+      - BASE_URI=https://localhost
+      - AUTH_SCOPES_DRIVE=openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/drive
+      - ALLOWED_APIS=drive
+      - INCREMENTAL_AUTH=true
+    depends_on:
+      - registrator
+      - consul
+      - nginx
+    networks:
+      - soasec_net
+
+  drive_api_conn:
+    build: drive-api-conn
+    container_name: drive_api_conn
+    ports:
+      - "127.0.0.1:8083:5000"
+    environment:
+      - FLASK_APP=api.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - SERVICE_NAME=drive_api_conn
+      - CLIENT_ID=953713129533-o6a1fvmt50q0m8gm8pm13kh5llbs71t8.apps.googleusercontent.com
+      - CLIENT_SECRET=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
+      - TOKEN_URI=https://oauth2.googleapis.com/token
+      - AUTH_URL=https://accounts.google.com/o/oauth2/auth
+      - FLASK_SECRET_KEY=ac3SN5Ro9lSU1Ii0UHiv
+      - BASE_URI=https://localhost
+      - AUTH_SCOPES_DRIVE=openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/drive
+      - GOOGLE_AUTH_URL=http://google_auth:5000
+    depends_on:
+      - registrator
+      - consul
+      - nginx
+    networks:
+      - soasec_net
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./redis:/data
+    depends_on:
+      - registrator
+      - consul
+      - nginx
+    networks:
+      - soasec_net
+
+networks:
+  soasec_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.26.0/24

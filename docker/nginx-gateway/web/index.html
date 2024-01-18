@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="it" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="generator" content="Hugo 0.112.5">
+
+        <title>SOASec - Stefania Bello</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="static/css/bs-style.css" rel="stylesheet">
+        <link href="static/css/dashboard.css" rel="stylesheet">
+        <link href="static/css/sign-in.css" rel="stylesheet">
+    </head>
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+            <symbol id="door-opened" viewBox="0 0 16 16">
+                <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+            </symbol>
+            <symbol id="google-calendar" viewBox="0 0 256 256">
+                <path fill="#FFF" d="M195.368 60.632H60.632v134.736h134.736z"/>
+                <path fill="#EA4335" d="M195.368 256L256 195.368l-30.316-5.172l-30.316 5.172l-5.533 27.73z"/>
+                <path fill="#188038"
+                      d="M0 195.368v40.421C0 246.956 9.044 256 20.21 256h40.422l6.225-30.316l-6.225-30.316l-33.033-5.172L0 195.368Z"/>
+                <path fill="#1967D2"
+                      d="M256 60.632V20.21C256 9.044 246.956 0 235.79 0h-40.422c-3.688 15.036-5.533 26.101-5.533 33.196c0 7.094 1.845 16.24 5.533 27.436c13.41 3.84 23.515 5.76 30.316 5.76c6.801 0 16.906-1.92 30.316-5.76Z"/>
+                <path fill="#FBBC04" d="M256 60.632h-60.632v134.736H256z"/>
+                <path fill="#34A853" d="M195.368 195.368H60.632V256h134.736z"/>
+                <path fill="#4285F4"
+                      d="M195.368 0H20.211C9.044 0 0 9.044 0 20.21v175.158h60.632V60.632h134.736V0Z"/>
+                <path fill="#4285F4"
+                      d="M88.27 165.154c-5.036-3.402-8.523-8.37-10.426-14.94l11.689-4.816c1.06 4.042 2.913 7.175 5.558 9.398c2.627 2.223 5.827 3.318 9.566 3.318c3.823 0 7.107-1.162 9.852-3.487c2.746-2.324 4.127-5.288 4.127-8.875c0-3.672-1.449-6.67-4.345-8.994c-2.897-2.324-6.535-3.486-10.88-3.486h-6.754v-11.57h6.063c3.739 0 6.888-1.011 9.448-3.033c2.56-2.02 3.84-4.783 3.84-8.303c0-3.132-1.145-5.625-3.435-7.494c-2.29-1.87-5.188-2.813-8.708-2.813c-3.436 0-6.164.91-8.185 2.745a16.115 16.115 0 0 0-4.413 6.754l-11.57-4.817c1.532-4.345 4.345-8.185 8.471-11.503c4.127-3.318 9.398-4.985 15.798-4.985c4.733 0 8.994.91 12.767 2.745c3.772 1.836 6.736 4.379 8.875 7.613c2.14 3.25 3.2 6.888 3.2 10.93c0 4.126-.993 7.613-2.98 10.476c-1.988 2.863-4.43 5.052-7.327 6.585v.69a22.248 22.248 0 0 1 9.398 7.327c2.442 3.284 3.672 7.208 3.672 11.79c0 4.58-1.163 8.673-3.487 12.26c-2.324 3.588-5.54 6.417-9.617 8.472c-4.092 2.055-8.69 3.1-13.793 3.1c-5.912.016-11.369-1.685-16.405-5.087Zm71.797-58.005l-12.833 9.28l-6.417-9.734l23.023-16.607h8.825v78.333h-12.598V107.15Z"/>
+            </symbol>
+            <symbol id="google-drive" viewBox="0 0 256 229">
+                <path fill="#0066DA"
+                      d="m19.354 196.034l11.29 19.5c2.346 4.106 5.718 7.332 9.677 9.678c11.34-14.394 19.232-25.44 23.68-33.137c4.513-7.811 10.06-20.03 16.641-36.655c-17.736-2.335-31.176-3.502-40.32-3.502c-8.777 0-22.217 1.167-40.322 3.502c0 4.545 1.173 9.09 3.519 13.196l15.835 27.418Z"/>
+                <path fill="#EA4335"
+                      d="M215.681 225.212c3.96-2.346 7.332-5.572 9.677-9.677l4.692-8.064l22.434-38.855a26.566 26.566 0 0 0 3.518-13.196c-18.21-2.335-31.625-3.502-40.247-3.502c-9.266 0-22.682 1.167-40.248 3.502c6.503 16.716 11.977 28.935 16.422 36.655c4.483 7.789 12.4 18.834 23.752 33.137Z"/>
+                <path fill="#00832D"
+                      d="M128.001 73.311c13.12-15.845 22.162-28.064 27.125-36.655c3.997-6.918 8.396-17.964 13.196-33.137C164.363 1.173 159.818 0 155.126 0h-54.25C96.184 0 91.64 1.32 87.68 3.519c6.106 17.402 11.288 29.787 15.544 37.154c4.704 8.142 12.963 19.021 24.777 32.638Z"/>
+                <path fill="#2684FC"
+                      d="M175.36 155.42H80.642l-40.32 69.792c3.958 2.346 8.503 3.519 13.195 3.519h148.968c4.692 0 9.238-1.32 13.196-3.52l-40.32-69.791Z"/>
+                <path fill="#00AC47"
+                      d="M128.001 73.311L87.681 3.52c-3.96 2.346-7.332 5.571-9.678 9.677L3.519 142.224A26.567 26.567 0 0 0 0 155.42h80.642l47.36-82.109Z"/>
+                <path fill="#FFBA00"
+                      d="m215.242 77.71l-37.243-64.514c-2.345-4.106-5.718-7.331-9.677-9.677l-40.32 69.792l47.358 82.109h80.496c0-4.546-1.173-9.09-3.519-13.196L215.242 77.71Z"/>
+            </symbol>
+        </svg>
+        <main class="form-signin w-100 m-auto">
+            <h1 class="h1 mb-3 d-flex justify-content-center">Benvenuto/a!</h1>
+            <div>
+                <p>
+                    <a href="/driveApi">
+                        <button type="button" class="w-100 btn btn-primary">
+                            Vai a Drive API
+                            <svg class="bi">
+                                <use xlink:href="#google-drive"/>
+                            </svg>
+                        </button>
+                    </a>
+                </p>
+                <p class="d-flex justify-content-center">oppure</p>
+                <p>
+                    <button type="button" class="w-100 btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal">
+                        <svg class="bi">
+                            <use xlink:href="#door-opened"/>
+                        </svg>
+                        Logout
+                    </button>
+                </p>
+                <p>
+                    <button type="button" class="w-100 btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#revokeModal">
+                        Revoca autorizzazioni
+                    </button>
+                </p>
+            </div>
+
+            <p class="mt-5 mb-3 text-body-secondary">&copy; Progetto SOASec - Stefania Bello</p>
+        </main>
+
+        <!-- logoutModal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="loogutModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="logoutModalLabel">Logout</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Così cancellerai i dati di sessione.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <a href="/googleAuth/logout">
+                            <button type="button" class="btn btn-primary">Logout</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- revokeModal -->
+        <div class="modal fade" id="revokeModal" tabindex="-1" aria-labelledby="revokeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="revokeModalLabel">Revoca autorizzazioni</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Sei sicuro/a di voler revocare le autorizzazioni? Dovrai concederle nuovamente se vuoi che
+                        l'applicazione possa accedere al tuo Google Drive.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <a href="/googleAuth/revoke">
+                            <button type="button" class="btn btn-primary">Revoca</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="static/js/bootstrap/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
